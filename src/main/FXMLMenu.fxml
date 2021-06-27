@@ -8,11 +8,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.FXMLMenuController">
-   <center>
-      <AnchorPane fx:id="ap" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.FXMLMenuController">
+   <top>
+      <AnchorPane fx:id="ap" prefHeight="23.0" prefWidth="850.0" BorderPane.alignment="CENTER">
          <children>
-            <MenuBar layoutY="-2.0" prefHeight="29.0" prefWidth="700.0">
+            <MenuBar layoutY="-2.0" prefHeight="29.0" prefWidth="850.0">
               <menus>
                 <Menu mnemonicParsing="false" text="Food Manage">
                   <items>
@@ -49,7 +49,13 @@
                   </Menu>
               </menus>
             </MenuBar>
-            <ImageView fitHeight="250.0" fitWidth="375.0" layoutX="163.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <AnchorPane fx:id="apCenter" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="250.0" fitWidth="375.0" layoutX="238.0" layoutY="207.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@JCP.corp.png" />
                </image>

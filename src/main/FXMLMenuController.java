@@ -30,6 +30,8 @@ public class FXMLMenuController implements Initializable {
     private BorderPane bp;
     @FXML
     private AnchorPane ap;
+    @FXML
+    private AnchorPane apCenter;
 
     /**
      * Initializes the controller class.
