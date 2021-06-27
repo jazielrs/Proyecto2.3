@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+
+<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <AnchorPane fx:id="ap" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar layoutY="-2.0" prefHeight="29.0" prefWidth="700.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="Search">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Search Food-Products" />
+                     </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Reports">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Supermarket-restaurant report" />
+                        <MenuItem mnemonicParsing="false" text="Food-product report" />
+                        <MenuItem mnemonicParsing="false" text="Search report" />
+                     </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
