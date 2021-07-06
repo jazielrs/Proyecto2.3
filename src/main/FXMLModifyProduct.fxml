@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="615.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.FXMLModifyProductController">
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #F2E0C9;" BorderPane.alignment="CENTER">
+         <children>
+            <Text fill="#403822" layoutX="409.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modify Product">
+               <font>
+                  <Font name="Palatino Linotype" size="40.0" />
+               </font>
+            </Text>
+            <Line endX="434.0" layoutX="378.0" layoutY="118.0" startX="-101.0" stroke="#a62103" />
+            <Line endX="439.0" layoutX="375.0" layoutY="29.0" startX="-100.0" stroke="#a62103" />
+            <Text fx:id="txtProductID" fill="#403822" layoutX="351.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product ID" visible="false" wrappingWidth="150.13671875">
+               <font>
+                  <Font name="Palatino Linotype" size="25.0" />
+               </font>
+            </Text>
+            <Text fx:id="txtProductName" fill="#403822" layoutX="351.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Name" visible="false" wrappingWidth="204.13671875">
+               <font>
+                  <Font name="Palatino Linotype" size="25.0" />
+               </font>
+            </Text>
+            <Text fx:id="txtPrice" fill="#403822" layoutX="351.0" layoutY="379.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price" visible="false" wrappingWidth="118.13671875">
+               <font>
+                  <Font name="Palatino Linotype" size="25.0" />
+               </font>
+            </Text>
+            <Text fx:id="txtSupermarket" fill="#403822" layoutX="351.0" layoutY="441.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Supermarket" visible="false" wrappingWidth="178.13671875">
+               <font>
+                  <Font name="Palatino Linotype" size="25.0" />
+               </font>
+            </Text>
+            <Button fx:id="btnModifyProduct" layoutX="363.0" layoutY="505.0" mnemonicParsing="false" onAction="#btnModifyProduct" style="-fx-background-color: #365902;" text="Modify Product" textFill="WHITE" visible="false">
+               <font>
+                  <Font name="Palatino Linotype" size="20.0" />
+               </font>
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color red="0.250980406999588" green="0.21960784494876862" blue="0.13333334028720856" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btnClean" layoutX="602.0" layoutY="505.0" mnemonicParsing="false" onAction="#btnClean" prefHeight="40.0" prefWidth="168.0" style="-fx-background-color: #365902;" text="Clean" textFill="WHITE" visible="false">
+               <font>
+                  <Font name="Palatino Linotype" size="20.0" />
+               </font>
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color red="0.250980406999588" green="0.21960784494876862" blue="0.13333334028720856" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </Button>
+            <TextField fx:id="txtFieldProductID" editable="false" layoutX="602.0" layoutY="225.0" prefHeight="25.0" prefWidth="213.0" visible="false" />
+            <TextField fx:id="txtFieldProductName" layoutX="602.0" layoutY="294.0" onKeyTyped="#textValidation" prefHeight="25.0" prefWidth="213.0" visible="false" />
+            <TextField fx:id="txtFieldProductPrice" layoutX="602.0" layoutY="362.0" onKeyTyped="#onKeyPressedType" prefHeight="25.0" prefWidth="213.0" visible="false" />
+            <ComboBox fx:id="comboSupermarket" layoutX="603.0" layoutY="424.0" prefWidth="211.0" visible="false" />
+            <Text fill="#403822" layoutX="219.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select the product to modificate" wrappingWidth="370.13671875">
+               <font>
+                  <Font name="Palatino Linotype" size="25.0" />
+               </font>
+            </Text>
+            <ComboBox fx:id="comboModifyProduct" layoutX="676.0" layoutY="160.0" onAction="#comboModifyProduct" prefHeight="25.0" prefWidth="210.0" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

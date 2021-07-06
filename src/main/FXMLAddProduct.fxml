@@ -12,38 +12,38 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="615.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.FXMLAddFoodController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="615.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.FXMLAddProductController">
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #F2E0C9;" BorderPane.alignment="CENTER">
          <children>
-            <Text fill="#403822" layoutX="411.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add New Food">
+            <Text fill="#403822" layoutX="387.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add New Product">
                <font>
                   <Font name="Palatino Linotype" size="40.0" />
                </font>
             </Text>
             <Line endX="326.0" layoutX="496.0" layoutY="113.0" startX="-218.0" stroke="#a62103" />
             <Line endX="326.0" layoutX="495.0" layoutY="31.0" startX="-217.0" stroke="#a62103" />
-            <Text fill="#403822" layoutX="329.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Food ID" wrappingWidth="106.13671875">
+            <Text fill="#403822" layoutX="335.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product ID" wrappingWidth="133.13671875">
                <font>
                   <Font name="Palatino Linotype" size="25.0" />
                </font>
             </Text>
-            <Text fill="#403822" layoutX="329.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Food Name" wrappingWidth="142.13671875">
+            <Text fill="#403822" layoutX="335.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Name" wrappingWidth="172.13671875">
                <font>
                   <Font name="Palatino Linotype" size="25.0" />
                </font>
             </Text>
-            <Text fill="#403822" layoutX="329.0" layoutY="343.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price" wrappingWidth="118.13671875">
+            <Text fill="#403822" layoutX="335.0" layoutY="342.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price" wrappingWidth="118.13671875">
                <font>
                   <Font name="Palatino Linotype" size="25.0" />
                </font>
             </Text>
-            <Text fill="#403822" layoutX="329.0" layoutY="417.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Restaurant ID" wrappingWidth="178.13671875">
+            <Text fill="#403822" layoutX="335.0" layoutY="419.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Supermarket" wrappingWidth="178.13671875">
                <font>
                   <Font name="Palatino Linotype" size="25.0" />
                </font>
             </Text>
-            <Button fx:id="btnAddFood" layoutX="388.0" layoutY="484.0" mnemonicParsing="false" onAction="#btnAddFood" style="-fx-background-color: #365902;" text="Add Food" textFill="WHITE">
+            <Button fx:id="btnAddProduct" layoutX="388.0" layoutY="484.0" mnemonicParsing="false" onAction="#btnAddProduct" style="-fx-background-color: #365902;" text="Add Product" textFill="WHITE">
                <font>
                   <Font name="Palatino Linotype" size="20.0" />
                </font>
@@ -58,7 +58,7 @@
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </Button>
-            <Button fx:id="btnClean" layoutX="587.0" layoutY="484.0" mnemonicParsing="false" onAction="#btnClean" prefHeight="40.0" prefWidth="117.0" style="-fx-background-color: #365902;" text="Clean" textFill="WHITE">
+            <Button fx:id="btnClean" layoutX="596.0" layoutY="484.0" mnemonicParsing="false" onAction="#btnClean" prefHeight="40.0" prefWidth="143.0" style="-fx-background-color: #365902;" text="Clean" textFill="WHITE">
                <font>
                   <Font name="Palatino Linotype" size="20.0" />
                </font>
@@ -73,10 +73,10 @@
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </Button>
-            <TextField fx:id="txtFieldFoodID" editable="false" layoutX="571.0" layoutY="190.0" prefHeight="25.0" prefWidth="213.0" />
-            <TextField fx:id="txtFieldFoodName" layoutX="571.0" layoutY="260.0" onKeyTyped="#textValidation" prefHeight="25.0" prefWidth="213.0" />
-            <TextField fx:id="txtFieldFoodPrice" layoutX="571.0" layoutY="326.0" onKeyTyped="#onKeyPressedType" prefHeight="25.0" prefWidth="213.0" />
-            <ComboBox fx:id="comboRestaurantID" layoutX="572.0" layoutY="400.0" prefWidth="211.0" />
+            <TextField fx:id="txtFieldProductID" editable="false" layoutX="571.0" layoutY="190.0" prefHeight="25.0" prefWidth="213.0" />
+            <TextField fx:id="txtFieldProductName" layoutX="571.0" layoutY="260.0" onKeyTyped="#textValidation" prefHeight="25.0" prefWidth="213.0" />
+            <TextField fx:id="txtFieldProductPrice" layoutX="571.0" layoutY="325.0" onKeyTyped="#onKeyPressedType" prefHeight="25.0" prefWidth="213.0" />
+            <ComboBox fx:id="comboSupermarketID" layoutX="572.0" layoutY="397.0" prefWidth="211.0" />
          </children>
       </AnchorPane>
    </center>

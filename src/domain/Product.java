@@ -17,6 +17,7 @@ public class Product {
     private int supermarketID;
 
     public Product(String name, double price, int supermarketID) {
+        this.autoID = ++autoID;
         this.name = name;
         this.price = price;
         this.supermarketID = supermarketID;
@@ -56,6 +57,6 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" + "autoID=" + autoID + ", name=" + name + ", price=" + price + ", supermarketID=" + supermarketID + '}';
+        return autoID + "," + name + "," + price + "," + supermarketID;
     } 
 }

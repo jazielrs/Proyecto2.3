@@ -48,24 +48,24 @@ public class BST implements Tree {
         return root == null;
     }
 
-    @Override
+     @Override
     public boolean contains(Object element) throws TreeException {
-        if (isEmpty()) {
+        if(isEmpty())
             throw new TreeException("Binary Search Tree is empty");
-        }
         return binarySearch(root, element);
     }
-
-    private boolean binarySearch(BTreeNode node, Object element) {
-        if (node == null) {
+    
+    private boolean binarySearch(BTreeNode node, Object element){
+        if(node==null)
             return false;
-        } else if (util.Utility.equals(node.data, element)) {
-            return true; //ya lo encontro
-        } else if (util.Utility.lessT(element, node.data)) {
-            return binarySearch(node.left, element);
-        } else {
-            return binarySearch(node.right, element);
-        }
+        else
+            if(util.Utility.equals(node.data, element)){
+                return true; //ya lo encontro
+            }else
+                if(util.Utility.lessT(element, node.data))
+                    return binarySearch(node.left, element);
+                else
+                    return binarySearch(node.right, element);
     }
 
     @Override
@@ -299,21 +299,6 @@ public class BST implements Tree {
 //        result += "\nInOrder: " + InOrder(root);
 //        result += "\nPostOrder: " + postOrder(root);
         return result;
-    }
-
-    public boolean existe(Object info) {
-
-        BTreeNode node = root;
-        while (node != null) {
-            if (util.Utility.equals(info, node.data)) {
-                return true;
-            } else if (util.Utility.lessT(info, node.data)) {
-                node = node.right;
-            } else {
-                node = node.left;
-            }
-        }
-        return false;
     }
 
 }

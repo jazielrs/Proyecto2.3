@@ -30,6 +30,10 @@ public class Food {
     public static void setAutoID(int autoID) {
         Food.autoID = autoID;
     }
+
+    public Food() {
+        
+    }
     
     public String getName() {
         return name;
@@ -57,6 +61,6 @@ public class Food {
 
     @Override
     public String toString() {
-        return "Food{" + "autoID=" + autoID + ",name=" + name + ",price=" + price + ",restaurantID=" + restaurantID + '}';
+        return autoID + "," + name + "," + price + "," + restaurantID;
     }  
 }

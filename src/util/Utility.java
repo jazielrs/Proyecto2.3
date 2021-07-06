@@ -6,6 +6,11 @@
 package util;
 
 import domain.BST.BST;
+import domain.Food;
+import domain.Product;
+import domain.Restaurant;
+import domain.Supermarket;
+import domain.graph.AdjacencyListGraph;
 import domain.linkedList.CircularDoublyLinkedList;
 import domain.linkedList.CircularLinkedList;
 import domain.linkedList.ListException;
@@ -23,10 +28,37 @@ import java.util.logging.Logger;
  * @author Profesor Lic. Gilberth Chaves Avila
  */
 public class Utility {
+
     private static boolean loginState = true;
     private static CircularLinkedList circularList = new CircularLinkedList();
     private static CircularDoublyLinkedList circularDoublyList = new CircularDoublyLinkedList();
     private static BST bstFood = new BST();
+    private static BST bstProduct = new BST();
+//////////////////////////////////////////////////////////////////////////////7 Cris
+    private static AdjacencyListGraph graphList = new AdjacencyListGraph(10);
+
+    public static String wkIst(Object a) {
+        if (a instanceof Restaurant) {
+            return "restaurant";
+        }
+        if (a instanceof Supermarket) {
+            return "supermarket";
+        }
+        return "unknown";
+    }
+
+    public static AdjacencyListGraph getGraphList() {
+        return graphList;
+    }
+
+    //////////////////////////////////////////////////////////
+    public static BST getBstProduct() {
+        return bstProduct;
+    }
+
+    public static void setBstProduct(BST bstProduct) {
+        Utility.bstProduct = bstProduct;
+    }
 
     public static BST getBstFood() {
         return bstFood;
@@ -35,74 +67,6 @@ public class Utility {
     public static void setBstFood(BST bstFood) {
         Utility.bstFood = bstFood;
     }
-
-//    public static CircularDoublyLinkedList getDeEnrollmentList() {
-//        return deEnrollmentList;
-//    }
-
-//    public static void setDeEnrollmentList(CircularDoublyLinkedList list) {
-//        if (Utility.deEnrollmentList.isEmpty()) {
-//            Utility.deEnrollmentList = list;
-//        } else {
-//            try {
-//                for (int i = 1; i < list.size(); i++) {
-//                    if (!Utility.deEnrollmentList.contains(list.getNode(i).data)) {
-//                        Utility.deEnrollmentList.contains(list.getNode(i).data);
-//                    }
-//                }
-//            } catch (ListException ex) {
-//                Logger.getLogger(Utility.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
-//    }
-//
-//    public static String getStudentIDTable() {
-//        return studentIDTable;
-//    }
-//
-//    public static void setStudentIDTable(String studentIDTable) {
-//        Utility.studentIDTable = studentIDTable;
-//    }
-//
-//    public static SinglyLinkedList getSinglyList() {
-//        return singlyList;
-//    }
-//
-//    public static void setSinglyList(SinglyLinkedList list) {
-//        if (Utility.singlyList.isEmpty()) {
-//            Utility.singlyList = list;
-//        } else {
-//            try {
-//                for (int i = 1; i < list.size(); i++) {
-//                    if (!Utility.singlyList.contains(list.getNode(i).data)) {
-//                        Utility.singlyList.contains(list.getNode(i).data);
-//                    }
-//                }
-//            } catch (ListException ex) {
-//                Logger.getLogger(Utility.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
-//    }
-//
-//    public static DoublyLinkedList getDoublyList() {
-//        return doublyList;
-//    }
-//
-//    public static void setDoublyList(DoublyLinkedList list) {
-//        if (Utility.doublyList.isEmpty()) {
-//            Utility.doublyList = list;
-//        } else {
-//            try {
-//                for (int i = 1; i < list.size(); i++) {
-//                    if (!Utility.doublyList.contains(list.getNode(i).data)) {
-//                        Utility.doublyList.contains(list.getNode(i).data);
-//                    }
-//                }
-//            } catch (ListException ex) {
-//                Logger.getLogger(Utility.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
-//    }
 
     public static CircularLinkedList getCircularList() {
         return circularList;
@@ -147,7 +111,6 @@ public class Utility {
 //    public static CircularDoublyLinkedList getEnrollmentList() {
 //        return enrollmentList;
 //    }
-
     public static void setEnrollmentList(CircularDoublyLinkedList list) {
         if (Utility.circularDoublyList.isEmpty()) {
             Utility.circularDoublyList = list;
@@ -163,8 +126,6 @@ public class Utility {
             }
         }
     }
-    
-    
 
     public static int random() {
         return 1 + (int) Math.floor(Math.random() * 99);
@@ -209,18 +170,22 @@ public class Utility {
                 String s2 = (String) b;
                 // return s1.compareTo(s2)==0; Op1
                 return s1.equalsIgnoreCase(s2); //Op2
-//            case "career":
-//                Career c1 = (Career) a;
-//                Career c2 = (Career) b;
-//                return c1.equals(c2);
-//            case "student":
-//                Student stu1 = (Student) a;
-//                Student stu2 = (Student) b;
-//                return stu1.getId() == (stu2.getId());
-//            case "course":
-//                Course cou1 = (Course) a;
-//                Course cou2 = (Course) b;
-//                return cou1.getId() == (cou2.getId()); 
+            case "food":
+                Food f1 = (Food) a;
+                Food f2 = (Food) b;
+                return f1.toString().equals(f2.toString());
+            case "product":
+                Product p1 = (Product) a;
+                Product p2 = (Product) b;
+                return p1.toString().equals(p2.toString());
+            case "restaurant":
+                Restaurant r1 = (Restaurant) a;
+                Restaurant r2 = (Restaurant) b;
+                return r1.getName().equalsIgnoreCase(r2.getName()) && r1.getLocation().equalsIgnoreCase(r2.getLocation());
+            case "supermarket":
+                Supermarket sp1 = (Supermarket) a;
+                Supermarket sp2 = (Supermarket) b;
+                return sp1.getName().equalsIgnoreCase(sp2.getName()) && sp1.getLocation().equalsIgnoreCase(sp2.getLocation());
         }
         return false;//En cualquier otro caso retorne false;
     }
@@ -232,17 +197,18 @@ public class Utility {
         if (a instanceof String && b instanceof String) {
             return "string";
         }
-//        if (a instanceof Career && b instanceof Career) {
-//            return "career";
-//        }
-//        if (a instanceof Student && b instanceof Student) {
-//            return "student";
-//        }
-//        if (a instanceof Course && b instanceof Course) {
-//            return "course";
-//        }
-//        
-//        if(a instanceof JobPosition && b instanceof JobPosition){return "JobPosition";}//Comparo 2 empleados
+        if (a instanceof Food && b instanceof Food) {
+            return "food";
+        }
+        if (a instanceof Product && b instanceof Product) {
+            return "product";
+        }
+        if (a instanceof Restaurant && b instanceof Restaurant) {
+            return "restaurant";
+        }
+        if (a instanceof Supermarket && b instanceof Supermarket) {
+            return "supermarket";
+        }
         return "unknown";
     }
 
@@ -256,6 +222,14 @@ public class Utility {
                 String s1 = (String) a;
                 String s2 = (String) b;
                 return s1.compareTo(s2) < 0;//Primero mayor que segundo
+            case "food":
+                Food f1 = (Food) a;
+                Food f2 = (Food) b;
+                return f1.toString().compareTo(f2.toString()) < 0;
+            case "product":
+                Product p1 = (Product) a;
+                Product p2 = (Product) b;
+                return p1.toString().compareTo(p2.toString()) < 0;
 
         }
         return false;//En cualquier otro caso retorne false;
@@ -271,6 +245,14 @@ public class Utility {
                 String s1 = (String) a;
                 String s2 = (String) b;
                 return s1.compareTo(s2) > 0;//Primero mayor que segundo
+            case "food":
+                Food f1 = (Food) a;
+                Food f2 = (Food) b;
+                return f1.toString().compareTo(f2.toString()) > 0;
+            case "product":
+                Product p1 = (Product) a;
+                Product p2 = (Product) b;
+                return p1.toString().compareTo(p2.toString()) > 0;
         }
         return false;//En cualquier otro caso retorne false;
     }
@@ -321,11 +303,12 @@ public class Utility {
     public static String dateFormat(Date date) {
         return new SimpleDateFormat("dd/MM/yyyy").format(date);
     }
-    
-    public static boolean getStateLogin(){
+
+    public static boolean getStateLogin() {
         return loginState;
     }
-    public static void setStateLogin(boolean state){
+
+    public static void setStateLogin(boolean state) {
         loginState = state;
     }
 }

@@ -1,10 +1,10 @@
 package domain;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 
 import domain.BST.BST;
 import domain.BST.TreeException;
@@ -35,8 +35,9 @@ import javax.crypto.spec.SecretKeySpec;
  * @author PaoVega
  */
 public class Files {
+int counter = 1;
 
-   public boolean existFile(String address) {
+    public boolean existFile(String address) {
         File file = new File(address);
         return file.exists();
     }
@@ -45,7 +46,7 @@ public class Files {
 
         BufferedWriter bw = new BufferedWriter(new FileWriter("foodFile.txt", true));//no sobreescibe
         try {
-            bw.write(food.getName() + "," + food.getPrice() + "," + food.getRestaurantID());
+            bw.write(food.getAutoID() + "," + food.getName() + "," + food.getPrice() + "," + food.getRestaurantID());
             bw.newLine();
             bw.flush();
             bw.close();
@@ -62,48 +63,24 @@ public class Files {
         String result = "";
 
         String treeData[] = new String[bst.size()];
+        String treeData1[] = new String[50];
         treeData = bst.preOrderAux().split("\n");
 
-        for (int i = 0; i < treeData.length; i++) {
-            result += treeData[i];
+        for (int i = 0; i < bst.size(); i++) {
+            treeData1 = treeData[i].split(",");
+            result += i + 1 + "," + treeData1[1] + "," + treeData1[2] + "," + treeData1[3] + "\n";
         }
 
-//        for (int i = 1; i <= list.size(); i++) {
-//            Course course = (Course) list.getNode(i).data;
-//            result += course.getId() + "," + course.getName() + ","
-//                    + course.getCredits() + "," + course.getCarrerID() + "\n";//No trabajar con el id sino con e i
-//        }
         BufferedWriter bw = new BufferedWriter(new FileWriter("foodFile.txt"));//sobreescibe
-        //        try {
-        //            String course[] = result.split("\n");
-        //            for (int i = 0; i < course.length; i++) {
-        //                bw.write(course[i]);
-        //                bw.newLine();
-        //                bw.flush();
-        //            }
-        //            bw.close();
-        //
-        //        } catch (FileNotFoundException e) {
-        //            System.out.println(e.getMessage());
-        //        } catch (IOException e) {
-        //            System.out.println(e.getMessage());
-        //        }
 
-//    public BST loadTreeFood(String fileDir, BST bst) throws FileNotFoundException, IOException{
-//
-//        BufferedReader br = new BufferedReader(new FileReader(fileDir));
-//        String linea = br.readLine();
-//
-//        if (linea != null) {
-//            while (linea != null) {
-//                String food[] = linea.split(",");//Divide la linea en un array de String
-//                bst.add(new Food(food[1], Double.parseDouble(food[2]), Integer.parseInt(food[4])));
-//                linea = br.readLine();
-//            }
-//        }//Fin linea+
-//        br.close();
-//        return bst;
-//    }
+        String foods[] = result.split("\n");
+
+        for (int i = 0; i < treeData.length; i++) {
+            bw.write(foods[i]);
+            bw.newLine();
+            bw.flush();
+        }
+        bw.close();
     }
 
     public BST loadFoodsBSTrees(String fileDir, BST tree) throws IOException {
@@ -117,7 +94,7 @@ public class Files {
         if (linea != null) {
             while (linea != null) {
                 Object foodS[] = linea.split(",");//Divide la linea en un array de String
-                Food food = new Food(foodS[0].toString(), Double.parseDouble(foodS[1].toString()), Integer.parseInt(foodS[2].toString())); //Carga las comidas del txt
+                Food food = new Food((String) foodS[1], Double.parseDouble((String) foodS[2]), Integer.parseInt((String) foodS[3])); //Carga las comidas del txt
                 tree.add(food);
                 linea = br.readLine();
             }
@@ -125,9 +102,51 @@ public class Files {
         br.close();
         return tree;
     }
-     public BST loadProductsBSTrees(String fileDir, BST tree) throws IOException {
+    
+    public void addProduct(Product product) throws IOException {
+        
+        BufferedWriter bw = new BufferedWriter(new FileWriter("productFile.txt", true));//no sobreescibe
+        try {
+            bw.write(product.getAutoID() + "," + product.getName() + "," + product.getPrice() + "," + product.getSupermarketID());
+            bw.newLine();
+            bw.flush();
+            bw.close();
+
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void modifyProduct(BST bst) throws IOException, TreeException {
+
+        String result = "";
+
+        String treeData[] = new String[bst.size()];
+        String treeData1[] = new String[50];
+        treeData = bst.preOrderAux().split("\n");
+
+        for (int i = 0; i < bst.size(); i++) {
+            treeData1 = treeData[i].split(",");
+            result += i + 1 + "," + treeData1[1] + "," + treeData1[2] + "," + treeData1[3] + "\n";
+        }
+
+        BufferedWriter bw = new BufferedWriter(new FileWriter("productFile.txt"));//sobreescibe
+
+        String products[] = result.split("\n");
+
+        for (int i = 0; i < treeData.length; i++) {
+            bw.write(products[i]);
+            bw.newLine();
+            bw.flush();
+        }
+        bw.close();
+    }
+
+    public BST loadProductsBSTrees(String fileDir, BST tree) throws IOException {
         if (!existFile(fileDir)) {
-            BufferedWriter bw = new BufferedWriter(new FileWriter("products.txt", true));
+            BufferedWriter bw = new BufferedWriter(new FileWriter("productFile.txt", true));
         }
 
         BufferedReader br = new BufferedReader(new FileReader(fileDir));
@@ -135,17 +154,16 @@ public class Files {
 
         if (linea != null) {
             while (linea != null) {
-                Object productS[] = linea.split(",");//Divide la linea en un array de String
+                Object products[] = linea.split(",");//Divide la linea en un array de String
                 //Carga las comidas del txt
-                Product product = new Product(productS[0].toString(), Double.parseDouble(productS[1].toString()), Integer.parseInt(productS[2].toString())); 
+                Product product = new Product((String) products[1], Double.parseDouble((String) products[2]), Integer.parseInt((String) products[3]));
                 tree.add(product);
                 linea = br.readLine();
             }
         }//Fin linea+
         br.close();
         return tree;
-     }
-
+    }
 
     public void addManager(String username, String password, String keyWord) throws IOException, ListException {
         BufferedWriter bw = new BufferedWriter(new FileWriter("managersFile.txt", true));//no sobreescibe
@@ -191,7 +209,7 @@ public class Files {
     }
 
     public void cleanFile(String fileName) throws IOException {
-            BufferedWriter bw = new BufferedWriter(new FileWriter(fileName));
+        BufferedWriter bw = new BufferedWriter(new FileWriter(fileName));
         try {
             bw.write("");//Escribe un vacio en el archivo
         } catch (IOException ex) {
@@ -274,6 +292,37 @@ public class Files {
         String data = new String(dataDencrypt);
 
         return data;
+    }
+
+    public void addRestaurant(Restaurant restaurant) throws IOException {
+        BufferedWriter bw = new BufferedWriter(new FileWriter("restaurantsFile.txt", true));//no sobreescibe
+        try {
+            bw.write(counter + "," + restaurant.getName()+ "," + restaurant.getLocation());
+            counter++;
+            bw.newLine();
+            bw.flush();
+            bw.close(); 
+
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void addMarket(Supermarket superMarket) throws IOException {
+        BufferedWriter bw = new BufferedWriter(new FileWriter("superMarketsFile.txt", true));//no sobreescibe
+        try {
+            bw.write(counter + "," + superMarket.getName()+ "," + superMarket.getLocation());
+            counter++;
+            bw.newLine();
+            bw.flush();
+            bw.close(); 
+
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
 }
