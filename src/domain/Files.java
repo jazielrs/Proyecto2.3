@@ -5,9 +5,10 @@ package domain;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import domain.BST.BST;
 import domain.BST.TreeException;
+import domain.graph.AdjacencyListGraph;
+import domain.graph.GraphException;
 import domain.linkedList.ListException;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -29,13 +30,15 @@ import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
+import sun.security.provider.certpath.AdjacencyList;
 
 /**
  *
  * @author PaoVega
  */
 public class Files {
-int counter = 1;
+
+    int counter = 1;
 
     public boolean existFile(String address) {
         File file = new File(address);
@@ -102,9 +105,9 @@ int counter = 1;
         br.close();
         return tree;
     }
-    
+
     public void addProduct(Product product) throws IOException {
-        
+
         BufferedWriter bw = new BufferedWriter(new FileWriter("productFile.txt", true));//no sobreescibe
         try {
             bw.write(product.getAutoID() + "," + product.getName() + "," + product.getPrice() + "," + product.getSupermarketID());
@@ -118,7 +121,7 @@ int counter = 1;
             System.out.println(e.getMessage());
         }
     }
-    
+
     public void modifyProduct(BST bst) throws IOException, TreeException {
 
         String result = "";
@@ -297,11 +300,11 @@ int counter = 1;
     public void addRestaurant(Restaurant restaurant) throws IOException {
         BufferedWriter bw = new BufferedWriter(new FileWriter("restaurantsFile.txt", true));//no sobreescibe
         try {
-            bw.write(counter + "," + restaurant.getName()+ "," + restaurant.getLocation());
+            bw.write(counter + "," + restaurant.getName() + "," + restaurant.getLocation());
             counter++;
             bw.newLine();
             bw.flush();
-            bw.close(); 
+            bw.close();
 
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
@@ -309,14 +312,81 @@ int counter = 1;
             System.out.println(e.getMessage());
         }
     }
+
     public void addMarket(Supermarket superMarket) throws IOException {
         BufferedWriter bw = new BufferedWriter(new FileWriter("superMarketsFile.txt", true));//no sobreescibe
         try {
-            bw.write(counter + "," + superMarket.getName()+ "," + superMarket.getLocation());
+            bw.write(counter + "," + superMarket.getName() + "," + superMarket.getLocation());
             counter++;
             bw.newLine();
             bw.flush();
-            bw.close(); 
+            bw.close();
+
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public AdjacencyListGraph loadRestaurants(String fileDir, AdjacencyListGraph list) throws IOException, GraphException, ListException {
+        if (!existFile(fileDir)) {
+            BufferedWriter bw = new BufferedWriter(new FileWriter("restaurantsFile.txt", true));
+        }
+
+        BufferedReader br = new BufferedReader(new FileReader(fileDir));
+        String linea = br.readLine();
+
+        if (linea != null) {
+            while (linea != null) {
+                String restaurants[] = linea.split(",");//Divide la linea en un array de String
+                Restaurant restaurant = new Restaurant(restaurants[1], restaurants[2]); //Carga las comidas del txt
+                list.addVertex(restaurant);
+                linea = br.readLine();
+            }
+        }//Fin linea+
+        br.close();
+        return list;
+    }
+
+    public AdjacencyListGraph loadSuperMarkets(String fileDir, AdjacencyListGraph list) throws IOException, GraphException, ListException {
+        if (!existFile(fileDir)) {
+            BufferedWriter bw = new BufferedWriter(new FileWriter("superMarketsFile.txt", true));
+        }
+
+        BufferedReader br = new BufferedReader(new FileReader(fileDir));
+        String linea = br.readLine();
+
+        if (linea != null) {
+            while (linea != null) {
+                String superMarkets[] = linea.split(",");//Divide la linea en un array de String
+                Supermarket superMarket = new Supermarket(superMarkets[1], superMarkets[2]); //Carga las comidas del txt
+                list.addVertex(superMarket);
+                linea = br.readLine();
+            }
+        }//Fin linea+
+        br.close();
+        return list;
+    }
+
+    public void controlLoadRS() throws IOException, GraphException, ListException {
+        loadRestaurants("restaurantsFile.txt", util.Utility.getGraphList());
+        loadSuperMarkets("superMarketsFile.txt", util.Utility.getGraphList());
+    }
+
+    public void modifyRestaurant() throws IOException, ListException {
+        BufferedWriter bw = new BufferedWriter(new FileWriter("restaurantsFile.txt", true));//no sobreescibe
+        try {
+            for (int i = 1; i < util.Utility.getGraphList().size(); i++) {
+                Restaurant restaurant = new Restaurant(((Restaurant)util.Utility.getGraphList().getVertexByIndex(i)
+                        .data).getName(), ((Restaurant)util.Utility.getGraphList().getVertexByIndex(i)
+                        .data).getLocation());
+                bw.write(counter + "," + restaurant.getName() + "," + restaurant.getLocation());
+                counter++;
+                bw.newLine();
+                bw.flush();
+                bw.close();
+            }
 
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());

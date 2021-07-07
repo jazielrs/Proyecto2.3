@@ -6,20 +6,21 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="556.0" prefWidth="877.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.FXMLMaintenanceController">
+<AnchorPane id="AnchorPane" fx:id="apRoot" minHeight="-Infinity" minWidth="-Infinity" prefHeight="615.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.FXMLMaintenanceController">
    <children>
-      <TableView fx:id="outTable" layoutX="14.0" layoutY="119.0" prefHeight="340.0" prefWidth="365.0">
+      <TableView fx:id="outTable" layoutX="759.0" layoutY="69.0" prefHeight="335.0" prefWidth="316.0">
         <columns>
           <TableColumn fx:id="idColumn" prefWidth="39.0" text="Id" />
-          <TableColumn fx:id="nameColumn" prefWidth="167.0" text="Nombre" />
-            <TableColumn fx:id="locationColumn" prefWidth="156.0" text="Lugar" />
+          <TableColumn fx:id="nameColumn" prefWidth="126.0" text="Nombre" />
+            <TableColumn fx:id="locationColumn" prefWidth="152.0" text="Lugar" />
         </columns>
       </TableView>
-      <Button fx:id="deleteBtn" layoutX="590.0" layoutY="133.0" mnemonicParsing="false" onAction="#deleteBtn" text="Eliminar" />
-      <Button fx:id="modifyBtn" layoutX="463.0" layoutY="133.0" mnemonicParsing="false" onAction="#modifyBtn" text="Modificar" />
-      <TextField fx:id="nameObj" disable="true" layoutX="467.0" layoutY="185.0" prefHeight="25.0" prefWidth="246.0" promptText="Name" />
-      <TextField fx:id="locationObj" disable="true" layoutX="467.0" layoutY="236.0" prefHeight="25.0" prefWidth="246.0" promptText="Location" />
-      <Button fx:id="selectButton" layoutX="102.0" layoutY="80.0" mnemonicParsing="false" onAction="#selectButton" prefHeight="25.0" prefWidth="172.0" text="Seleccionar" />
-      <Button fx:id="actionChange" disable="true" layoutX="539.0" layoutY="277.0" mnemonicParsing="false" onAction="#actionChange" text="Aplicar Cambios" />
+      <Button fx:id="deleteBtn" layoutX="955.0" layoutY="428.0" mnemonicParsing="false" onAction="#deleteBtn" prefHeight="26.0" prefWidth="106.0" text="Eliminar" />
+      <Button fx:id="modifyBtn" layoutX="767.0" layoutY="428.0" mnemonicParsing="false" onAction="#modifyBtn" prefHeight="26.0" prefWidth="124.0" text="Modificar" />
+      <TextField fx:id="nameObj" disable="true" layoutX="807.0" layoutY="482.0" prefHeight="34.0" prefWidth="237.0" promptText="Name" />
+      <TextField fx:id="locationObj" disable="true" layoutX="808.0" layoutY="524.0" prefHeight="32.0" prefWidth="237.0" promptText="Location" />
+      <Button fx:id="selectButton" layoutX="759.0" layoutY="39.0" mnemonicParsing="false" onAction="#selectButton" prefHeight="25.0" prefWidth="317.0" text="Seleccionar" />
+      <Button fx:id="actionChange" disable="true" layoutX="856.0" layoutY="568.0" mnemonicParsing="false" onAction="#actionChange" prefHeight="25.0" prefWidth="121.0" text="Aplicar Cambios" />
+      <Button fx:id="btnCenter" layoutX="353.0" layoutY="283.0" mnemonicParsing="false" text="Button" />
    </children>
 </AnchorPane>

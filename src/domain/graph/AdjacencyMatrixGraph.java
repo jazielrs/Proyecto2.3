@@ -275,5 +275,10 @@ public class AdjacencyMatrixGraph implements Graph {
     public int indexOfValue(Object value) {
         return indexOf(value);
     }
+
+    @Override
+    public Vertex[] getVertexList() {
+        return vertexList;
+    }
    
 }

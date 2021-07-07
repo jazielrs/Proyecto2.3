@@ -7,6 +7,8 @@ package main;
 
 import domain.BST.BST;
 import domain.Files;
+import domain.graph.GraphException;
+import domain.linkedList.ListException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -50,7 +52,6 @@ public class FXMLMenuController implements Initializable {
     private MenuItem maintenance;
     @FXML
     private MenuItem createRS;
-
     /**
      * Initializes the controller class.
      */
@@ -60,7 +61,15 @@ public class FXMLMenuController implements Initializable {
         Files files = new Files();
         bstFood = util.Utility.getBstFood();
         bstProduct = util.Utility.getBstProduct();
-        
+        try {
+            files.controlLoadRS();
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLMenuController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (GraphException ex) {
+            Logger.getLogger(FXMLMenuController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ListException ex) {
+            Logger.getLogger(FXMLMenuController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         try {
             files.loadFoodsBSTrees("foodFile.txt", bstFood);
             files.loadProductsBSTrees("productFile.txt", bstProduct);

@@ -46,9 +46,14 @@ public class Utility {
         }
         return "unknown";
     }
-
+//    public static setAdjacencyListGraph(AdjacencyListGraph list){
+//        
+//    }
     public static AdjacencyListGraph getGraphList() {
         return graphList;
+    }
+    public static void setGraphList(AdjacencyListGraph list){
+        graphList = list;
     }
 
     //////////////////////////////////////////////////////////

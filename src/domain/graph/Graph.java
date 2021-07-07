@@ -45,5 +45,6 @@ public interface Graph {
     public Vertex getVertexByIndex(int index);
     public Object[][] getMatrix();
     public int indexOfValue(Object value);
+    public Vertex[] getVertexList();
     
 }
